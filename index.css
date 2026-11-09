@@ -1,0 +1,217 @@
+:root {
+  --bg: #13121c;
+  --surface: #1c1a29;
+  --line: #2f2b45;
+  --text: #ece9f4;
+  --muted: #a59fbd;
+  --accent: #b9a3ff;
+  --accent-ink: #1a1230;
+  --ok: #5fd39a;
+  --radius: 14px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Nav ---------- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem clamp(1.25rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.brand-logo { width: 34px; height: 34px; object-fit: contain; }
+
+.nav nav { display: flex; gap: clamp(1rem, 3vw, 2rem); }
+
+.nav nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav nav a:hover,
+.nav nav a.active {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 2rem);
+}
+
+.kicker {
+  margin: 0 0 0.5rem;
+  color: var(--accent);
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+h1 {
+  margin: 0 0 0.75rem;
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.role {
+  margin: 0 0 1.25rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.lead {
+  margin: 0 0 1.5rem;
+  max-width: 46ch;
+  color: var(--muted);
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 0;
+}
+
+.chips li {
+  padding: 0.3rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chips li:last-child { color: var(--accent); border-color: var(--accent); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform 0.15s, filter 0.2s, border-color 0.2s;
+}
+
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { filter: brightness(1.08); }
+
+.btn.ghost { border: 1px solid var(--line); color: var(--text); }
+.btn.ghost:hover { border-color: var(--accent); }
+
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
+
+/* ---------- Hero visual ---------- */
+.hero-visual { position: relative; }
+
+.photo {
+  aspect-ratio: 4 / 5;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.float {
+  position: absolute;
+  margin: 0;
+  padding: 0.55rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.float.exp { top: 8%; left: -6%; }
+
+.float.hire {
+  bottom: 8%;
+  right: -4%;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 4px rgba(95, 211, 154, 0.18);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  padding: 1.5rem clamp(1.25rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.footer p { margin: 0; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-visual { max-width: 420px; margin: 0 auto; width: 100%; }
+  .float.exp { left: 4%; }
+  .float.hire { right: 4%; }
+  .nav { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

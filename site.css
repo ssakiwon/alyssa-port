@@ -1,0 +1,118 @@
+/* Shared by every page: login/logout area in the nav + flash messages */
+:root {
+  --ok: #5fd39a;
+  --error: #ff8a8a;
+  --accent-ink: #1a1230;
+}
+
+.nav nav { align-items: center; flex-wrap: wrap; }
+
+.nav .nav-hello { color: var(--text); font-size: 0.95rem; }
+
+.nav .nav-form { display: inline-block; margin: 0; }
+
+.nav .linkbtn {
+  margin: 0;
+  padding: 0.25rem 0;
+  background: none;
+  color: var(--muted);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav .linkbtn:hover { color: var(--text); border-color: var(--accent); filter: none; }
+
+.flash {
+  width: calc(100% - 2 * clamp(1.25rem, 5vw, 2rem));
+  max-width: 1100px;
+  margin: 1.25rem auto 0;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.flash.ok    { color: var(--ok);    border-color: var(--ok); }
+.flash.error { color: var(--error); border-color: var(--error); }
+
+/* ---------- Unread count (admin) ---------- */
+.nav .count {
+  display: inline-block;
+  min-width: 1.35em;
+  margin-left: 0.25rem;
+  padding: 0 0.4em;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ---------- Theme toggle ---------- */
+:root { color-scheme: dark; }
+
+.nav .theme-toggle {
+  margin: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+
+.nav .theme-toggle:hover { border-color: var(--accent); filter: none; }
+.nav .theme-toggle:active { transform: scale(0.94); }
+
+/* In dark mode show the sun (click = go light); in light mode show the moon */
+.theme-toggle .i-moon { display: none; }
+:root[data-theme="light"] .theme-toggle .i-sun  { display: none; }
+:root[data-theme="light"] .theme-toggle .i-moon { display: inline; }
+
+/* ---------- Light theme: pastel yellow ---------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #fff6c9;
+  --surface: #fffbe6;
+  --line: #e8d78a;
+  --text: #3b3320;
+  --muted: #76693f;
+  --accent: #6b46d9;
+  --accent-ink: #ffffff;
+  --ok: #1d7f55;
+  --error: #c0392b;
+}
+
+:root[data-theme="light"] .float { box-shadow: 0 10px 28px rgba(140, 115, 20, 0.18); }
+:root[data-theme="light"] .grid.has-focus .card.is-focused {
+  box-shadow: 0 0 0 1px var(--accent), 0 18px 40px rgba(140, 115, 20, 0.22);
+}
+:root[data-theme="light"] input:focus,
+:root[data-theme="light"] textarea:focus { box-shadow: 0 0 0 3px rgba(107, 70, 217, 0.22); }
+:root[data-theme="light"] .dot { box-shadow: 0 0 0 4px rgba(29, 127, 85, 0.18); }
+
+/* ---------- Home hero photo: red dress in dark mode, white dress in light mode ---------- */
+.photo img.hero-dark,
+.photo img.hero-light { object-position: 50% 30%; }
+
+.photo img.hero-light { display: none; }
+
+:root[data-theme="light"] .photo img.hero-dark  { display: none; }
+:root[data-theme="light"] .photo img.hero-light { display: block; }
